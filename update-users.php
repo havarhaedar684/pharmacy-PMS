@@ -1,18 +1,20 @@
 <?php
 include "db.php";
+$id=$_GET['id'] ?? '';
 if($_POST){
 $name=$_POST['username'];
 $email=$_POST['email'];
 $pass=$_POST['password'];
 $role=$_POST['role'];
+$sql_u="UPDATE users SET name='$name',email='$email',pass='$pass',role='$role' WHERE id='$id'";
 
-$sql="INSERT INTO users (name, email, pass, role)VALUES ('$name','$email','$pass','$role')";
-$result=mysqli_query($conn, $sql);
-if($result){
+$result_u=mysqli_query($conn, $sql_u);
+if($result_u){
     header("Location:show.php");
     exit();
 }
 }
+
 
 
 
