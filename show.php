@@ -1,7 +1,7 @@
 <?php
 include "db.php";
 $sql="SELECT * FROM users";
-$result=mysqli_query($conn, )
+$result=mysqli_query($conn,$sql);
 
 
 
@@ -133,18 +133,21 @@ td {
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                    if($result){
+                     while($row=mysqli_fetch_assoc($result)){
+                    
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>Havar Haider</td>
-                        <td>havar@gmail.com</td>
-                        <td><span class="badge admin">admin</span></td>
+                        <td><?php echo $row['id'];?></td>
+                        <td><?php echo $row['name'];?></td>
+                        <td><?php echo $row['email'];?></td>
+                        <td><span class="badge cashier"><?php echo $row['role'];?></span></td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Ahmad Ali</td>
-                        <td>ahmad@gmail.com</td>
-                        <td><span class="badge cashier">cashier</span></td>
-                    </tr>
+                    <?php
+                     }
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
