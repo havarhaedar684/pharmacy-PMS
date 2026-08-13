@@ -107,7 +107,7 @@ body {
                 <input type="text" name="name" required>
             </div>
 
-            <button type="submit" class="btn">Save Category</button>
+            <button type="submit" class="btn">Add Category</button>
               <a href="categories.php" class="btn cancel-btn">Cancel</a>
         </form>
 
