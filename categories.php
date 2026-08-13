@@ -189,7 +189,6 @@ th {
             <?php 
             if($result){
             while($row=mysqli_fetch_assoc($result)){
-
             
             ?>
             <tr>
@@ -198,8 +197,8 @@ th {
                 <td><?php echo $row['create_at'];?></td>
                 <td>
                     <div class="action-btns">
-                        <a href="add_category.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a>
-                        <a href="delete_category.php?id=1" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+                        <a href="update_category.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a>
+                        <a href="delete_category.php?id=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
                     </div>
                 </td>
             </tr>
