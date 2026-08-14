@@ -209,7 +209,7 @@ th {
             ?>
         </table>
         
-        <a href="add_supplier.php" class="btn"><i class="fa-solid fa-plus"></i> Add New Supplier</a>
+        <a href="add_suppliers.php" class="btn"><i class="fa-solid fa-plus"></i> Add New Supplier</a>
     </div>
 </div>
 
