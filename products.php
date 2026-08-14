@@ -223,13 +223,13 @@ th {
 
             ?>
             <tr>
-                <td><?php echo['id']; ?></td>
-                <td><?php echo['s_name']; ?></td>
-                <td><?php echo['']; ?></td>
-                <td><?php echo['']; ?></td>
-                <td><?php echo['sale_price']; ?></td>
-                <td><?php echo['purchase_price']; ?></td>
-                <td><?php echo['stock']; ?></td>
+                <td><?php echo $row['id']; ?></td>
+                <td><?php echo $row['s_name']; ?></td>
+                <td><?php echo $row['category']; ?></td>
+                <td><?php echo $row['supplier']; ?></td>
+                <td><?php echo $row['sale_price']."IQD"; ?></td>
+                <td><?php echo $row['purchase_price']."IQD"; ?></td>
+                <td><?php echo $row['stock']; ?></td>
                 <td>
                     <div class="action-btns">
                         <a href="edit_product.php?id=1" class="edit-btn">Edit</a>
