@@ -198,7 +198,7 @@ th {
                 <td><?php echo $row['create_at'];?></td>
                 <td>
                     <div class="action-btns">
-                        <a href="edit_supplier.php?id=1" class="edit-btn">Edit</a>
+                        <a href="update_suppliers.php?id=<?php echo $row['id'];?>" class="edit-btn">Edit</a>
                         <a href="delete_supplier.php?id=1" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
                     </div>
                 </td>
