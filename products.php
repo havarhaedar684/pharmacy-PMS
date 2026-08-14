@@ -227,8 +227,8 @@ th {
                 <td><?php echo $row['s_name']; ?></td>
                 <td><?php echo $row['category']; ?></td>
                 <td><?php echo $row['supplier']; ?></td>
-                <td><?php echo $row['sale_price']."IQD"; ?></td>
-                <td><?php echo $row['purchase_price']."IQD"; ?></td>
+                <td><?php echo number_format($row['sale_price'])." IQD"; ?></td>
+                <td><?php echo number_format($row['purchase_price'])." IQD"; ?></td>
                 <td><?php echo $row['stock']; ?></td>
                 <td>
                     <div class="action-btns">
