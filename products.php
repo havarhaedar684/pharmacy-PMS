@@ -233,7 +233,7 @@ th {
                 <td>
                     <div class="action-btns">
                         <a href="update_pro.php?id=<?php echo $row['id'];?>" class="edit-btn">Edit</a>
-                        <a href="delete_product.php?id=1" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+                        <a href="delete_pro.php?id=<?php echo $row['id'];?>" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
                     </div>
                 </td>
             </tr>

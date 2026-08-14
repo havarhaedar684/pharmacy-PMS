@@ -1,12 +1,8 @@
 <?php
 include "db.php";
-
-
 $id = $_GET['id'] ?? '';
- 
 
 if($_POST){
-  
     $name = $_POST['s_name'];
     $category = $_POST['category'];
     $supplier = $_POST['supplier'];
