@@ -21,6 +21,7 @@ body {
     display: flex;
 }
 
+/* Sidebar */
 .sidebar {
     width: 220px;
     height: 100vh;
@@ -32,12 +33,15 @@ body {
     box-sizing: border-box;
 }
 
+/* Dashboard Title */
 .sidebar h2 {
     color: #155674;
     font-size: 20px;
+    margin-top: 0;
     margin-bottom: 25px;
 }
 
+/* Sidebar Links */
 .sidebar a {
     display: flex;
     align-items: center;
@@ -51,11 +55,35 @@ body {
     font-weight: 500;
 }
 
-.sidebar a:hover, .sidebar a.active {
+/* Active & Hover */
+.sidebar a:hover,
+.sidebar a.active {
     background-color: #0891b2;
     color: white;
 }
 
+/* Logout Button */
+.logout-btn {
+    background-color: #d9534f;
+    color: white;
+
+    position: absolute;
+    bottom: 35px;
+    left: 20px;
+
+    width: 180px;
+    box-sizing: border-box;
+
+    margin-bottom: 0 !important;
+}
+
+/* Logout Hover */
+.logout-btn:hover {
+    background-color: #c9302c !important;
+    color: white;
+}
+
+/* Main Content */
 .main-content {
     margin-left: 220px;
     padding: 40px;
@@ -63,6 +91,7 @@ body {
     flex-grow: 1;
 }
 
+/* Card */
 .card {
     background-color: #ADC4CE;
     padding: 30px;
@@ -70,6 +99,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Card Header */
 .card-header {
     display: flex;
     align-items: center;
@@ -77,24 +107,29 @@ body {
     margin-bottom: 25px;
 }
 
+/* Icon Box */
 .icon-box {
     background-color: #155674;
     color: white;
     width: 45px;
     height: 45px;
     border-radius: 10px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     font-size: 20px;
 }
 
+/* Card Title */
 .card-header h2 {
     margin: 0;
     color: #155674;
     font-size: 22px;
 }
 
+/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -104,25 +139,31 @@ table {
     margin-top: 15px;
 }
 
-th, td {
+/* Table Cells */
+th,
+td {
     padding: 14px 16px;
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
     font-size: 14px;
 }
 
+/* Table Header */
 th {
     background-color: #155674;
     color: white;
     font-weight: 600;
 }
 
+/* Action Buttons */
 .action-btns {
     display: flex;
     gap: 8px;
 }
 
-.edit-btn, .delete-btn {
+/* Edit & Delete Buttons */
+.edit-btn,
+.delete-btn {
     padding: 6px 14px;
     border-radius: 6px;
     color: white;
@@ -131,32 +172,42 @@ th {
     font-weight: 500;
 }
 
+/* Edit */
 .edit-btn {
     background-color: #155674;
 }
 
+/* Delete */
 .delete-btn {
     background-color: #d9534f;
 }
 
-.edit-btn:hover, .delete-btn:hover {
+/* Edit & Delete Hover */
+.edit-btn:hover,
+.delete-btn:hover {
     background-color: #0891b2;
 }
 
+/* Add Button */
 .btn {
     background-color: #155674;
     color: white;
+
     padding: 10px 18px;
     border-radius: 8px;
+
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+
     gap: 8px;
     margin-top: 20px;
+
     font-size: 14px;
     font-weight: 500;
 }
 
+/* Add Button Hover */
 .btn:hover {
     background-color: #0891b2;
 }
@@ -169,6 +220,9 @@ th {
     <a href="categories.php"><i class="fa-solid fa-list"></i> Categories</a>
     <a href="suppliers.php" class="active"><i class="fa-solid fa-truck"></i> Suppliers</a>
     <a href="show.php"><i class="fa-solid fa-users"></i> Users</a>
+     <div>
+        <a href="logout.php" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
 </div>
 
 <div class="main-content">

@@ -11,153 +11,173 @@ include "db.php";
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: #96B6C5;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-        }
+       body {
+    background-color: #96B6C5;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
 
-        .sidebar {
-            width: 220px;
-            height: 100vh;
-            background-color: #ADC4CE;
-            padding: 20px;
-            box-sizing: border-box;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background-color: #ADC4CE;
+    padding: 20px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 
-        .sidebar h2 {
-            color: #155674;
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
+.sidebar h2 {
+    color: #155674;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
 
-        .sidebar a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #333;
-            text-decoration: none;
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            border-radius: 6px;
-            font-size: 15px;
-        }
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    font-size: 15px;
+}
 
-        .sidebar a:hover, .sidebar a.active {
-            background-color: #0891b2;
-            color: white;
-        }
+.sidebar a:hover,
+.sidebar a.active {
+    background-color: #0891b2;
+    color: white;
+}
 
-        .main-content {
-            margin-left: 220px;
-            flex-grow: 1;
-            padding: 30px;
-            box-sizing: border-box;
-        }
+/* Logout */
+.logout-btn {
+    position: absolute;
+    bottom: 35px;
+    left: 20px;
+    width: 180px;
+    box-sizing: border-box;
+    background-color: #d9534f !important;
+    color: white !important;
+}
 
-        .card {
-            background-color: #ADC4CE;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+.logout-btn:hover {
+    background-color: #c9302c !important;
+    color: white !important;
+}
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
+.main-content {
+    margin-left: 220px;
+    flex-grow: 1;
+    padding: 30px;
+    box-sizing: border-box;
+}
 
-        .icon-box {
-            background-color: #155674;
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
+.card {
+    background-color: #ADC4CE;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
 
-        .card-header h2 {
-            margin: 0;
-            color: #155674;
-            font-size: 22px;
-        }
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
 
-        .card-header p {
-            margin: 2px 0 0 0;
-            color: #555;
-            font-size: 13px;
-        }
+.icon-box {
+    background-color: #155674;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-        }
+.card-header h2 {
+    margin: 0;
+    color: #155674;
+    font-size: 22px;
+}
 
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-            font-size: 14px;
-        }
+.card-header p {
+    margin: 2px 0 0 0;
+    color: #555;
+    font-size: 13px;
+}
 
-        th {
-            background-color: #155674;
-            color: white;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-        .action-btns {
-            display: flex;
-            gap: 6px;
-        }
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
 
-        .edit-btn, .delete-btn {
-            padding: 6px 12px;
-            border-radius: 4px;
-            color: white;
-            text-decoration: none;
-            font-size: 12px;
-            display: inline-block;
-        }
+th {
+    background-color: #155674;
+    color: white;
+}
 
-        .edit-btn {
-            background-color: #155674;
-        }
+.action-btns {
+    display: flex;
+    gap: 6px;
+}
 
-        .delete-btn {
-            background-color: #d9534f;
-        }
+.edit-btn,
+.delete-btn {
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    display: inline-block;
+}
 
-        .edit-btn:hover, .delete-btn:hover {
-            background-color: #0891b2;
-        }
+.edit-btn {
+    background-color: #155674;
+}
 
-        .btn {
-            background-color: #155674;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 6px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 14px;
-        }
+.delete-btn {
+    background-color: #d9534f;
+}
 
-        .btn:hover {
-            background-color: #0891b2;
-        }
+.edit-btn:hover,
+.delete-btn:hover {
+    background-color: #0891b2;
+}
+
+.btn {
+    background-color: #155674;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.btn:hover {
+    background-color: #0891b2;
+}
     </style>
 </head>
 <body>
@@ -168,6 +188,9 @@ include "db.php";
     <a href="categories.php"><i class="fa-solid fa-list"></i> Categories</a>
      <a href="suppliers.php" ><i class="fa-solid fa-truck"></i> Suppliers</a>
     <a href="users.php" class="active"><i class="fa-solid fa-users"></i> Users</a>
+     <div>
+        <a href="logout.php" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
    
 </div>
 

@@ -16,30 +16,36 @@ $result=mysqli_query($conn, $sql);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <style>
-    body {
+   body {
     background-color: #96B6C5;
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
 }
 
+/* Sidebar */
 .sidebar {
     width: 220px;
     height: 100vh;
     background-color: #ADC4CE;
-    padding: 20px;
+    padding: 30px 20px 20px 20px;
     position: fixed;
     top: 0;
     left: 0;
     box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
 }
 
+/* Dashboard */
 .sidebar h2 {
     color: #155674;
     font-size: 20px;
-    margin-bottom: 25px;
+    margin: 0 0 25px 0;
 }
 
+/* Menu links */
 .sidebar a {
     display: flex;
     align-items: center;
@@ -53,11 +59,32 @@ $result=mysqli_query($conn, $sql);
     font-weight: 500;
 }
 
-.sidebar a:hover, .sidebar a.active {
+.sidebar a:hover,
+.sidebar a.active {
     background-color: #0891b2;
     color: white;
 }
 
+/* Logout */
+.logout-btn {
+    background-color: #d9534f;
+    color: white;
+    
+    position: absolute;
+    bottom: 35px;
+    left: 20px;
+    width: 180px;
+    box-sizing: border-box;
+
+    margin-bottom: 0 !important;
+}
+
+.logout-btn:hover {
+    background-color: #c9302c !important;
+    color: white;
+}
+
+/* Main Content */
 .main-content {
     margin-left: 220px;
     padding: 40px;
@@ -65,6 +92,7 @@ $result=mysqli_query($conn, $sql);
     flex-grow: 1;
 }
 
+/* Card */
 .card {
     background-color: #ADC4CE;
     padding: 30px;
@@ -97,6 +125,7 @@ $result=mysqli_query($conn, $sql);
     font-size: 22px;
 }
 
+/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -106,7 +135,8 @@ table {
     margin-top: 15px;
 }
 
-th, td {
+th,
+td {
     padding: 14px 16px;
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
@@ -119,12 +149,14 @@ th {
     font-weight: 600;
 }
 
+/* Action Buttons */
 .action-btns {
     display: flex;
     gap: 8px;
 }
 
-.edit-btn, .delete-btn {
+.edit-btn,
+.delete-btn {
     padding: 6px 14px;
     border-radius: 6px;
     color: white;
@@ -141,10 +173,12 @@ th {
     background-color: #d9534f;
 }
 
-.edit-btn:hover, .delete-btn:hover {
+.edit-btn:hover,
+.delete-btn:hover {
     background-color: #0891b2;
 }
 
+/* Add Button */
 .btn {
     background-color: #155674;
     color: white;
@@ -171,6 +205,9 @@ th {
     <a href="categories.php" class="active"><i class="fa-solid fa-list"></i> Categories</a>
      <a href="suppliers.php"><i class="fa-solid fa-truck"></i> Suppliers</a>
     <a href="show.php"><i class="fa-solid fa-users"></i> Users</a>
+    <div>
+        <a href="logout.php" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
 </div>
 
 <div class="main-content">
