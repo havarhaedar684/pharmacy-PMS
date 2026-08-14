@@ -1,22 +1,20 @@
 <?php
 include "db.php";
-$sql="SELECT * FROM categories";
+$sql="SELECT * FROM suppliers";
 $result=mysqli_query($conn, $sql);
 
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Categories - Pharmacy PMS</title>
+    <title>Suppliers - Pharmacy POS</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <style>
-    body {
+body {
     background-color: #96B6C5;
     margin: 0;
     font-family: Arial, sans-serif;
@@ -168,26 +166,27 @@ th {
 <div class="sidebar">
     <h2>Dashboard</h2>
     <a href="index.php"><i class="fa-solid fa-house"></i> Home</a>
-    <a href="categories.php" class="active"><i class="fa-solid fa-list"></i> Categories</a>
-     <a href="suppliers.php"><i class="fa-solid fa-truck"></i> Suppliers</a>
+    <a href="categories.php"><i class="fa-solid fa-list"></i> Categories</a>
+    <a href="suppliers.php" class="active"><i class="fa-solid fa-truck"></i> Suppliers</a>
     <a href="show.php"><i class="fa-solid fa-users"></i> Users</a>
 </div>
 
 <div class="main-content">
     <div class="card">
         <div class="card-header">
-            <div class="icon-box"><i class="fa-solid fa-list"></i></div>
-            <h2>Categories Records</h2>
+            <div class="icon-box"><i class="fa-solid fa-truck"></i></div>
+            <h2>Suppliers Records</h2>
         </div>
         
         <table>
             <tr>
                 <th>ID</th>
-                <th>NAME</th>
+                <th>SUPPLIER NAME</th>
+                <th>PHONE</th>
                 <th>CREATED AT</th>
                 <th>ACTION</th>
             </tr>
-            <?php 
+            <?php
             if($result){
             while($row=mysqli_fetch_assoc($result)){
             
@@ -195,11 +194,12 @@ th {
             <tr>
                 <td><?php echo $row['id'];?></td>
                 <td><?php echo $row['name'];?></td>
+                <td><?php echo $row['phone'];?></td>
                 <td><?php echo $row['create_at'];?></td>
                 <td>
                     <div class="action-btns">
-                        <a href="update_category.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a>
-                        <a href="delete_category.php?id=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+                        <a href="edit_supplier.php?id=1" class="edit-btn">Edit</a>
+                        <a href="delete_supplier.php?id=1" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
                     </div>
                 </td>
             </tr>
@@ -209,7 +209,7 @@ th {
             ?>
         </table>
         
-        <a href="add_category.php" class="btn"><i class="fa-solid fa-plus"></i> Add New Category</a>
+        <a href="add_supplier.php" class="btn"><i class="fa-solid fa-plus"></i> Add New Supplier</a>
     </div>
 </div>
 

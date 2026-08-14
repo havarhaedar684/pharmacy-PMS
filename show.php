@@ -38,7 +38,7 @@ include "db.php";
         .sidebar a {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             color: #333;
             text-decoration: none;
             padding: 10px 15px;
@@ -48,7 +48,7 @@ include "db.php";
         }
 
         .sidebar a:hover, .sidebar a.active {
-            background-color: #155674;
+            background-color: #0891b2;
             color: white;
         }
 
@@ -165,7 +165,10 @@ include "db.php";
 <div class="sidebar">
     <h2>Dashboard</h2>
     <a href="index.php"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="categories.php"><i class="fa-solid fa-list"></i> Categories</a>
+     <a href="suppliers.php" ><i class="fa-solid fa-truck"></i> Suppliers</a>
     <a href="users.php" class="active"><i class="fa-solid fa-users"></i> Users</a>
+   
 </div>
 
 <div class="main-content">
