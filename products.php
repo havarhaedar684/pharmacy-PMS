@@ -1,8 +1,7 @@
 <?php
 include "db.php";
-$sql="SELECT * FROM categories";
+$sql="SELECT * FROM products";
 $result=mysqli_query($conn, $sql);
-
 
 ?>
 
@@ -11,19 +10,18 @@ $result=mysqli_query($conn, $sql);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Categories - Pharmacy PMS</title>
+    <title>Products - Pharmacy POS</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <style>
-   body {
+body {
     background-color: #96B6C5;
     margin: 0;
     font-family: Arial, sans-serif;
     display: flex;
 }
 
-/* Sidebar */
 .sidebar {
     width: 220px;
     height: 100vh;
@@ -33,19 +31,23 @@ $result=mysqli_query($conn, $sql);
     top: 0;
     left: 0;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+.sidebar-top {
     display: flex;
     flex-direction: column;
 }
 
-/* Dashboard */
 .sidebar h2 {
     color: #155674;
     font-size: 20px;
-    margin: 0 0 25px 0;
+    margin-top: 0;
+    margin-bottom: 25px;
 }
 
-/* Menu links */
 .sidebar a {
     display: flex;
     align-items: center;
@@ -59,24 +61,15 @@ $result=mysqli_query($conn, $sql);
     font-weight: 500;
 }
 
-.sidebar a:hover,
-.sidebar a.active {
+.sidebar a:hover, .sidebar a.active {
     background-color: #0891b2;
     color: white;
 }
 
-/* Logout */
 .logout-btn {
     background-color: #d9534f;
     color: white;
-    
-    position: absolute;
-    bottom: 35px;
-    left: 20px;
-    width: 180px;
-    box-sizing: border-box;
-
-    margin-bottom: 0 !important;
+    margin-bottom: 0;
 }
 
 .logout-btn:hover {
@@ -84,7 +77,6 @@ $result=mysqli_query($conn, $sql);
     color: white;
 }
 
-/* Main Content */
 .main-content {
     margin-left: 220px;
     padding: 40px;
@@ -92,7 +84,6 @@ $result=mysqli_query($conn, $sql);
     flex-grow: 1;
 }
 
-/* Card */
 .card {
     background-color: #ADC4CE;
     padding: 30px;
@@ -125,7 +116,6 @@ $result=mysqli_query($conn, $sql);
     font-size: 22px;
 }
 
-/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -135,8 +125,7 @@ table {
     margin-top: 15px;
 }
 
-th,
-td {
+th, td {
     padding: 14px 16px;
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
@@ -149,14 +138,12 @@ th {
     font-weight: 600;
 }
 
-/* Action Buttons */
 .action-btns {
     display: flex;
     gap: 8px;
 }
 
-.edit-btn,
-.delete-btn {
+.edit-btn, .delete-btn {
     padding: 6px 14px;
     border-radius: 6px;
     color: white;
@@ -173,12 +160,10 @@ th {
     background-color: #d9534f;
 }
 
-.edit-btn:hover,
-.delete-btn:hover {
+.edit-btn:hover, .delete-btn:hover {
     background-color: #0891b2;
 }
 
-/* Add Button */
 .btn {
     background-color: #155674;
     color: white;
@@ -200,13 +185,16 @@ th {
 <body>
 
 <div class="sidebar">
-    <h2>Dashboard</h2>
-    <a href="index.php"><i class="fa-solid fa-house"></i> Home</a>
-    <a href="categories.php" class="active"><i class="fa-solid fa-list"></i> Categories</a>
-     <a href="products.php"><i class="fa-solid fa-pills"></i> Products</a>
-     <a href="suppliers.php"><i class="fa-solid fa-truck"></i> Suppliers</a>
-    <a href="show.php"><i class="fa-solid fa-users"></i> Users</a>
-    <div>
+    <div class="sidebar-top">
+        <h2>Dashboard</h2>
+        <a href="index.php"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="categories.php"><i class="fa-solid fa-list"></i> Categories</a>
+        <a href="products.php" class="active"><i class="fa-solid fa-pills"></i> Products</a>
+        <a href="suppliers.php"><i class="fa-solid fa-truck"></i> Suppliers</a>
+        <a href="show.php"><i class="fa-solid fa-users"></i> Users</a>
+    </div>
+    
+    <div class="sidebar-bottom">
         <a href="logout.php" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
     </div>
 </div>
@@ -214,40 +202,48 @@ th {
 <div class="main-content">
     <div class="card">
         <div class="card-header">
-            <div class="icon-box"><i class="fa-solid fa-list"></i></div>
-            <h2>Categories Records</h2>
+            <div class="icon-box"><i class="fa-solid fa-pills"></i></div>
+            <h2>Products Records</h2>
         </div>
         
         <table>
             <tr>
                 <th>ID</th>
                 <th>NAME</th>
-                <th>CREATED AT</th>
+                <th>CATEGORY</th>
+                <th>SUPPLIER</th>
+                <th>PURCHASE PRICE</th>
+                <th>SALE PRICE</th>
+                <th>STOCK</th>
                 <th>ACTION</th>
             </tr>
-            <?php 
-            if($result){
+          <?php  
+          if($result){
             while($row=mysqli_fetch_assoc($result)){
-            
+
             ?>
             <tr>
-                <td><?php echo $row['id'];?></td>
-                <td><?php echo $row['name'];?></td>
-                <td><?php echo $row['create_at'];?></td>
+                <td><?php echo['id']; ?></td>
+                <td><?php echo['s_name']; ?></td>
+                <td><?php echo['']; ?></td>
+                <td><?php echo['']; ?></td>
+                <td><?php echo['sale_price']; ?></td>
+                <td><?php echo['purchase_price']; ?></td>
+                <td><?php echo['stock']; ?></td>
                 <td>
                     <div class="action-btns">
-                        <a href="update_category.php?id=<?php echo $row['id']; ?>" class="edit-btn">Edit</a>
-                        <a href="delete_category.php?id=<?php echo $row['id']; ?>" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+                        <a href="edit_product.php?id=1" class="edit-btn">Edit</a>
+                        <a href="delete_product.php?id=1" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
                     </div>
                 </td>
             </tr>
             <?php
             }
-            }
+          }
             ?>
         </table>
         
-        <a href="add_category.php" class="btn"><i class="fa-solid fa-plus"></i> Add New Category</a>
+        <a href="add_product.php" class="btn"><i class="fa-solid fa-plus"></i> Add New Product</a>
     </div>
 </div>
 
