@@ -232,7 +232,7 @@ th {
                 <td><?php echo $row['stock']; ?></td>
                 <td>
                     <div class="action-btns">
-                        <a href="edit_product.php?id=1" class="edit-btn">Edit</a>
+                        <a href="update_pro.php?id=<?php echo $row['id'];?>" class="edit-btn">Edit</a>
                         <a href="delete_product.php?id=1" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
                     </div>
                 </td>
