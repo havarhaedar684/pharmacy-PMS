@@ -286,6 +286,7 @@ th {
                     <th>Price</th>
                     <th>Quantity</th>
                     <th>Subtotal</th>
+                    <th>Create_at</th>
                     <th>Action</th>
                 </tr>
                 <?php 
@@ -300,7 +301,7 @@ th {
                 <td><?php echo $row_select['create_at'];?></td>
                 
                 
-                <td><a href="#" style="color: #d9534f; text-decoration: none;"><i class="fa-solid fa-trash"></i> Delete</a></td>
+                <td><a href="delete_sale.php?id=<?php echo $row_select['id'];?>" style="color: #d9534f; text-decoration: none;"><i class="fa-solid fa-trash"></i> Delete</a></td>
                 </tr>
                 <?php
                 }
