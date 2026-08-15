@@ -15,7 +15,14 @@ $sql_show="INSERT INTO sales (name_pro, quantity, price, subtotal)
 values ('$product', '$qty','$price','$subtotal')";
 $result_show=mysqli_query($conn, $sql_show);
 
+$select_pro="SELECT stock FROM products where s_name='$product'";
+$result_pro=mysqli_query($conn, $select_pro);
+$row_pro=mysqli_fetch_assoc($result_pro);
+$quantity=$row_pro['stock'];
+$quantity=$quantity-$qty;
 
+$update_pro="UPDATE products set stock='$quantity' WHERE s_name ='$product'";
+$result_up=mysqli_query($conn,$update_pro);
 
 }
 }
