@@ -1,8 +1,51 @@
 <?php
 include "db.php";
+$error="";
+if(isset($_POST['index']) && isset($_POST['return_qty'])){
+    $sale_id = $_POST['index'] ?? '';
+    $return_qty = $_POST['return_qty'] ?? '';
+
+$return_sale="SELECT * FROM sales where id='$sale_id'";
+$query_sale=mysqli_query($conn,$return_sale);
+
+if($query_sale && mysqli_num_rows($query_sale)>0){
+$row_sale=mysqli_fetch_assoc($query_sale);
+$name_sale=$row_sale['name_pro'];
+$quantity_sale=$row_sale['quantity'];
+$unit_price=$row_sale['price'];
+
+if($return_qty < $quantity_sale){
+$update_product = "UPDATE products SET stock = stock + $return_qty WHERE s_name='$name_sale'";
+ mysqli_query($conn, $update_product);
+
+$new_qty = $quantity_sale - $return_qty;
+$new_subtotal = $new_qty * $unit_price;
+$update_sale = "UPDATE sales SET quantity='$new_qty', subtotal='$new_subtotal' WHERE id='$sale_id'";
+mysqli_query($conn, $update_sale);
+
+    header("Location: sales.php");
+    exit();
+}
+
+else if($return_qty == $quantity_sale){
+ $update_products="UPDATE Products SET stock=stock+$return_qty where s_name='$name_sale' ";
+ mysqli_query($conn, $update_products);
+$delete_sale="DELETE FROM sales where id='$sale_id'";
+$result_delete=mysqli_query($conn, $delete_sale);
+
+header("Location:sales.php");
+exit();
+}
+else{
+    $error="You dont have enough stock";
+}
+
+}
+}
+
 if($_POST){
 $product=$_POST['product'] ?? '';
-$qty=$_POST['qty'];
+$qty=$_POST['qty'] ?? '';
 $find_price="SELECT purchase_price FROM products where s_name='$product'";
 $find_result=mysqli_query($conn,$find_price);
 if($find_result && mysqli_num_rows($find_result)>0){
@@ -264,6 +307,12 @@ th {
                 <h2>Point of Sale (Sales)</h2>
             </div>
 
+            <?php if(!empty($error)){ ?>
+                <div class="alert-error">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <?php echo $error; ?>
+                </div>
+            <?php } ?>
+
             <!-- بەشی هەڵبژاردنی بەرهەم بە Select -->
             <form class="sales-form" action="" method="POST">
                 <select name="product" required>
@@ -308,7 +357,15 @@ th {
                 <td><?php echo $row_select['create_at'];?></td>
                 
                 
-                <td><a href="delete_sale.php?id=<?php echo $row_select['id'];?>" style="color: #d9534f; text-decoration: none;"><i class="fa-solid fa-trash"></i> Delete</a></td>
+                <td><a href="delete_sale.php?id=<?php echo $row_select['id'];?>" style="color: #d9534f; text-decoration: none;"><i class="fa-solid fa-trash"></i> Delete
+                </a>
+                <form action="sales.php" method="POST" style="display: inline-flex; gap: 5px; align-items: center;">
+                                 <input type="hidden" name="index" value="<?php echo $row_select['id']; ?>">
+                                   <input type="number" name="return_qty" value="1" min="1" max="<?php echo $row_select['quantity'];?>" class="return-input">
+                                    <button type="submit" class="btn-return-row">Return</button>
+                                 </form>
+               </td>
+               
                 </tr>
                 <?php
                 }

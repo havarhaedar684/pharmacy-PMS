@@ -220,6 +220,7 @@ th {
     <a href="categories.php"><i class="fa-solid fa-list"></i> Categories</a>
      <a href="products.php"><i class="fa-solid fa-pills"></i> Products</a>
     <a href="suppliers.php" class="active"><i class="fa-solid fa-truck"></i> Suppliers</a>
+    <a href="sales.php"><i class="fa-solid fa-cash-register"></i> Sales</a>
     <a href="show.php"><i class="fa-solid fa-users"></i> Users</a>
      <div>
         <a href="logout.php" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
