@@ -192,6 +192,7 @@ th {
         <a href="products.php" class="active"><i class="fa-solid fa-pills"></i> Products</a>
         <a href="suppliers.php"><i class="fa-solid fa-truck"></i> Suppliers</a>
         <a href="sales.php"><i class="fa-solid fa-cash-register"></i> Sales</a>
+        <a href="report.php"><i class="fa-solid fa-chart-line"></i> Report</a>
         <a href="show.php"><i class="fa-solid fa-users"></i> Users</a>
     </div>
     
