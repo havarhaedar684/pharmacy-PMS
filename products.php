@@ -187,7 +187,7 @@ th {
 <div class="sidebar">
     <div class="sidebar-top">
         <h2>Dashboard</h2>
-        <a href="index.php"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="dashboard.php"><i class="fa-solid fa-house"></i> Home</a>
         <a href="categories.php"><i class="fa-solid fa-list"></i> Categories</a>
         <a href="products.php" class="active"><i class="fa-solid fa-pills"></i> Products</a>
         <a href="suppliers.php"><i class="fa-solid fa-truck"></i> Suppliers</a>
