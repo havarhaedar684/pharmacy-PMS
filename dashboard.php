@@ -28,6 +28,9 @@ if($result_u){
     $row_u=mysqli_fetch_assoc($result_u);
     $total_u=$row_u['total'];
 }
+$sql_low="SELECT s_name, category, stock FROM products where stock <=5 ";
+$result_low=mysqli_query($conn, $sql_low);
+
 ?>
 
 
@@ -333,6 +336,7 @@ if($result_u){
     <!-- Recent Sales History Table -->
     <div class="table-box">
         <h3><i class="fa-solid fa-clock-rotate-left"></i> Recent Sales History</h3>
+
         <table>
             <tr>
                 <th>Product</th>
@@ -340,7 +344,24 @@ if($result_u){
                 <th>Subtotal</th>
                 <th>Time</th>
             </tr>
-            <!-- لێرەدا کۆدی لووپی PHPـەکەی خۆت دادەنێیت -->
+            <?php $sql1="SELECT * FROM sales";
+            $result1=mysqli_query($conn,$sql1);
+            if($result1){
+             while($row1=mysqli_fetch_assoc($result1)){
+            
+            
+            ?>
+            <tr>
+                <td><?php echo $row1['name_pro'];?></td>
+                <td><?php echo $row1['quantity'];?></td>
+                <td><?php echo number_format($row1['subtotal'])." IQD";?></td>
+                <td><?php echo $row1['create_at'];?></td>
+
+            </tr>
+            <?php
+            }
+            }
+            ?>
         </table>
     </div>
 
@@ -349,11 +370,22 @@ if($result_u){
         <h3><i class="fa-solid fa-triangle-exclamation" style="color: #d9534f;"></i> Low Stock Alerts</h3>
         <table>
             <tr>
-                <th>Product Name</th>
+                <th>Products</th>
                 <th>Category</th>
-                <th>Remaining Stock</th>
+                <th>Stock</th>
             </tr>
-            <!-- لێرەدا کۆدی لووپی PHPـەکەی خۆت دادەنێیت -->
+           <?php if($result_low){
+           while($row_low=mysqli_fetch_assoc($result_low)){
+           ?>
+            <tr>
+                <td><?php echo $row_low['s_name'];?></td>
+                <td><?php echo $row_low['category'];?></td>
+                <td><?php echo $row_low['stock'];?></td>
+            </tr>
+            <?php
+           }
+           }
+            ?>
         </table>
     </div>
 </div>
