@@ -1,5 +1,10 @@
 <?php
+session_start();
 include "db.php";
+if(!isset($_SESSION['username']) && $_SESSION['role']!='admin'){
+    header("Location:index.php");
+    exit();
+}
 $sql="SELECT * FROM sales";
 $result=mysqli_query($conn, $sql);
 
