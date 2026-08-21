@@ -217,6 +217,7 @@ th {
                 <th>PURCHASE PRICE</th>
                 <th>SALE PRICE</th>
                 <th>STOCK</th>
+                <th>Expiry</th>
                 <th>ACTION</th>
             </tr>
           <?php  
@@ -232,6 +233,7 @@ th {
                 <td><?php echo number_format($row['sale_price'])." IQD"; ?></td>
                 <td><?php echo number_format($row['purchase_price'])." IQD"; ?></td>
                 <td><?php echo $row['stock']; ?></td>
+                <td><?php echo $row['expire_date'] ?></td>
                 <td>
                     <div class="action-btns">
                         <a href="update_pro.php?id=<?php echo $row['id'];?>" class="edit-btn">Edit</a>

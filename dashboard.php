@@ -31,6 +31,10 @@ if($result_u){
 $sql_low="SELECT s_name, category, stock FROM products where stock <=5 ";
 $result_low=mysqli_query($conn, $sql_low);
 
+
+$sql_expire="SELECT s_name, category, expire_date FROM products where expire_date <= CURDATE()";
+$result_expire=mysqli_query($conn, $sql_expire);
+
 ?>
 
 
@@ -43,7 +47,7 @@ $result_low=mysqli_query($conn, $sql_low);
     <link rel="stylesheet" href="style.css">
 </head>
 <style>
-    body {
+ body {
     background-color: #96B6C5;
     margin: 0;
     font-family: Arial, sans-serif;
@@ -206,6 +210,7 @@ $result_low=mysqli_query($conn, $sql_low);
     color: #475569;
     font-size: 14px;
 }
+
 /* Tables Section Inside Card */
 .tables-container {
     display: grid;
@@ -214,9 +219,17 @@ $result_low=mysqli_query($conn, $sql_low);
     margin-top: 25px;
 }
 
+/* خشتەی سێیەم (Expiry Alerts) با پانتایی هەردوو ستوون بگرێت */
+.tables-container .table-box:nth-child(3) {
+    grid-column: span 2;
+}
+
 @media(max-width: 1100px) {
     .tables-container {
         grid-template-columns: 1fr;
+    }
+    .tables-container .table-box:nth-child(3) {
+        grid-column: span 1;
     }
 }
 
@@ -258,8 +271,8 @@ $result_low=mysqli_query($conn, $sql_low);
     font-weight: 600;
 }
 
-/* Badge for Low Stock */
-.badge-low {
+/* Badge for Low Stock & Expiry */
+.badge-low, .badge-expiry {
     background-color: #f8d7da;
     color: #721c24;
     padding: 4px 8px;
@@ -388,6 +401,35 @@ $result_low=mysqli_query($conn, $sql_low);
             ?>
         </table>
     </div>
+<!-- Expiry Alert Table -->
+    <div class="table-box">
+        <h3><i class="fa-solid fa-calendar-xmark" style="color: #d9534f;"></i> Expiry Alerts</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Expiry Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                if($result_expire){
+                while($row_expire=mysqli_fetch_assoc($result_expire)){  
+                ?>
+                <tr>
+                    <td><?php echo $row_expire['s_name'];?></td>
+                    <td><?php echo $row_expire['category'];?></td>
+                    <td><span class="badge-expiry"><?php echo $row_expire['expire_date'];?></span></td>
+                </tr>
+                <?php 
+                }
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 </div>
 
 </body>

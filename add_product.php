@@ -7,8 +7,9 @@ $supplier=$_POST['supplier'];
 $sale_price=$_POST['sale_price'];
 $purchase_price=$_POST['purchase_price'];
 $stock=$_POST['stock'];
-$sql_pro="INSERT INTO products (s_name, category, supplier, sale_price , purchase_price, stock)
- values ('$name', '$category', '$supplier', '$sale_price', '$purchase_price', '$stock')";
+$expiry=$_POST['expiry_date'];
+$sql_pro="INSERT INTO products (s_name, category, supplier, sale_price , purchase_price, stock,expire_date)
+ values ('$name', '$category', '$supplier', '$sale_price', '$purchase_price', '$stock', '$expiry')";
  $result_pro=mysqli_query($conn, $sql_pro);
  if($result_pro){
     header("Location:products.php");
@@ -170,6 +171,11 @@ body {
                 <label>Stock</label>
                 <input type="number" name="stock" required>
             </div>
+           
+            <div class="input-group">
+            <label>Expiry Date</label>
+            <input type="date" name="expiry_date" required>
+                </div>
 
             <button type="submit" class="btn">Save Product</button>
             <a href="products.php" class="btn cancel-btn">Cancel</a>
