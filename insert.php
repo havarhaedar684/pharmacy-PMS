@@ -5,10 +5,19 @@ $name=$_POST['username'];
 $email=$_POST['email'];
 $pass=$_POST['password'];
 $role=$_POST['role'];
+//charasari keshay SQL injection.....
+$sql="INSERT INTO users (name, email, pass, role)VALUES (?,?,?,?)";
+//mysqli_query dagorin bo mysqli_prepare....bo nasandni ???? akan ba database
+//$result=mysqli_query($conn, $sql);
+$result=mysqli_prepare($conn, $sql);
 
-$sql="INSERT INTO users (name, email, pass, role)VALUES ('$name','$email','$pass','$role')";
-$result=mysqli_query($conn, $sql);
-if($result){
+//bo pedani nrx ba ???? akan (Yan) bastnaway ???? akan ba variable akan($name, $email,$pass, $role )
+$nepr=mysqli_stmt_bind_param($result,"ssss",$name, $email, $pass, $role);
+
+//bo jebajekrdni perpare statment(stmt)
+$execute=mysqli_stmt_execute($result);
+
+if($execute){
     header("Location:show.php");
     exit();
 }
