@@ -12,7 +12,7 @@ if(mysqli_num_rows($result)>0){
    $row=mysqli_fetch_assoc($result);
 
 if(password_verify($pass,$row['pass'])){
-    $_SESSION['username']=$row['username'];
+    $_SESSION['name']=$row['name'];
 $_SESSION['role']=$row['role'];
 
 header("Location:show.php");
