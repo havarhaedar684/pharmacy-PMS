@@ -5,17 +5,23 @@ $error;
 if($_POST){
 $email=$_POST['email'];
 $pass=$_POST['password'];
-$sql="SELECT * FROM users where email='$email' AND pass='$pass'";
+$sql="SELECT * FROM users where email='$email'";
 $result=mysqli_query($conn, $sql);
 
 if(mysqli_num_rows($result)>0){
    $row=mysqli_fetch_assoc($result);
 
-$_SESSION['username']=$row['usename'];
+if(password_verify($pass,$row['pass'])){
+    $_SESSION['username']=$row['username'];
 $_SESSION['role']=$row['role'];
 
 header("Location:show.php");
 exit();
+
+}
+else{
+    $error="You can not login";
+}
 
 }else{
     $error="You can not login";
